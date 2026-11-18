@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#120c18">
+  <title>NECRO LORD — 起動の確認</title>
+  <style>
+    body { margin:0; background:#120c18; color:#f6edf9; font-family:system-ui,sans-serif; line-height:1.8; }
+    main { max-width:440px; padding:40px 24px; margin:auto; }
+    h1 { color:#edcf95; font-size:25px; }
+    h2 { font-size:21px; }
+    p, li { font-size:16px; }
+    a { display:block; margin:18px 0; padding:12px 16px; border:1px solid #edcf95; border-radius:10px; color:#edcf95; text-align:center; text-decoration:none; }
+    small { color:#c9b7d5; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>NECRO LORD</h1>
+  <h2 id="heading">ゲームを起動できませんでした</h2>
+  <p id="reason">ChromeとAndroid System WebViewを更新し、アプリを開き直してください。更新済みの場合は、アプリを終了してからもう一度お試しください。</p>
+  <p>このゲームにはChrome／WebView 111以降が必要です。</p>
+  <ol>
+    <li>Google PlayでChromeを更新します。</li>
+    <li>Android System WebViewにも更新があれば適用します。</li>
+    <li>NECRO LORDを終了してから開き直します。</li>
+  </ol>
+  <a href="https://play.google.com/store/apps/details?id=com.android.chrome">Google PlayでChromeを開く</a>
+  <a href="https://play.google.com/store/apps/details?id=com.google.android.webview">Android System WebViewを開く</a>
+  <a href="/">もう一度起動する</a>
+  <small>王国や探索の保存データを削除する必要はありません。</small>
+</main>
+<!-- Keep this page independent of modules, Capacitor APIs, and modern syntax:
+     it must remain readable on the unsupported WebView itself. -->
+<script>
+  var match = navigator.userAgent.match(/(?:Chrome|Chromium)\/(\d+)/);
+  if (match && Number(match[1]) < 111) {
+    document.getElementById('heading').textContent = 'Chromeの更新が必要です';
+    document.getElementById('reason').textContent = '端末のChrome／WebViewが古いため、ゲームを開始できません（現在のバージョン：' + match[1] + '）。下のボタンから更新してください。';
+  }
+</script>
+</body>
+</html>
